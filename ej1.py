@@ -32,6 +32,33 @@ for i in range(len(m)):
     for j in range(len(m[i])):
         m[i][j]=math.ceil(votos[i]/(j+1))
 
+m.astype(int)
 print(m)
 
 #Ahora calculamos los N-máximos valores de la matriz, siendo N el número de escaños.
+
+
+mAux = np.copy(m)
+vectormaximos = np.zeros(shape=(1,escanos))
+
+pos = [0,0]
+
+maximo= mAux[0][0]
+print (maximo)
+
+#for k in range (escanos):
+#    for i in range(len(mAux)):
+#        for j in range(len(mAux[i])):
+#            if ( maximo < mAux[i][j] ):
+#                pos = [i,j]
+                
+#    maximo=mAux(pos)
+#    vectormaximos[1][k]=maximo
+    
+    
+            
+
+
+
+
+
