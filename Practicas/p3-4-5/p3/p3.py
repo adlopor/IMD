@@ -26,21 +26,22 @@ def categorizar(df):
 		if is_numeric_dtype(df[i]) == False:
 			df[i] = df[i].astype('category').cat.codes
 
-def dividir_ent_test(dataframe, porcentajeEnt):
+def dividir_train_test(dataframe, percentTrain):
 	"""
-	- Función que divide un dataframe aleatoriamente en entrenamiento y en test.
-	- Recibe los siguientes argumentos:
+	- Función que divide un Dataframe en dos Dfs, uno con los patrones de Train y otro con los patrones de Test, de forma aleatoria.
+	- Argumentos de entrada:
 		- dataframe: Dataframe que vamos a utilizar para extraer los datos.
-		- porcentajeENt: Porcentaje de patrones en entrenamiento.
-	- Devuelve:
-		- train: Dataframe con los datos de entrenamiento.
-		- test: Dataframe con los datos de test.
+		- percentTrain: Porcentaje de patrones en entrenamiento.
+	- Return:
+		- train: Df con los datos de train.
+		- test: Df con los datos de test.
 	"""
-	mascara = np.random.rand(len(dataframe)) < porcentajeEnt
+	mascara = np.random.rand(len(dataframe)) < percentTrain
 	train = dataframe[mascara]
 	test = dataframe[~mascara]
 	return train, test
 
+#Copypasteado parcialmente de la practica de IMC
 def preprocesar_datos(filename):
 	label_e = preprocessing.LabelEncoder()
 	data=pd.read_csv(filename)
@@ -60,6 +61,7 @@ def preprocesar_datos(filename):
 	testOutputs=label_e.transform(testOutputs)
 	return X, y, df, trainInputs, trainOutputs, testInputs, testOutputs
 
+#Para usar un clasificador arboles de decision
 def clasificar_dt(df, trainInputs, trainOutputs, testInputs, testOutputs, graphname, features, classes):
 	print("\n[" + str(graphname) + "]")
 	clf=DecisionTreeClassifier()
@@ -79,6 +81,7 @@ def clasificar_dt(df, trainInputs, trainOutputs, testInputs, testOutputs, graphn
 	Image(graph.create_svg())
 	return precisionTest
 
+#Para usar un clasificador KNN
 def clasificar_knn(df, trainInputs, trainOutputs, testInputs, testOutputs, graphname, classname):
 	print("\n[" + str(graphname) + "]")
 	clf=neighbors.KNeighborsClassifier()
@@ -95,6 +98,7 @@ def clasificar_knn(df, trainInputs, trainOutputs, testInputs, testOutputs, graph
 	# graph.savefig(graphname)
 	return precisionTest
 
+#Para usar un clasificador SVM
 def clasificar_svm(X, y, df, trainInputs, trainOutputs, testInputs, testOutputs, graphname, classname):
 	print("\n[" + str(graphname) + "]")
 	clf=svm.SVC(kernel='rbf', gamma = 'scale')
@@ -111,6 +115,7 @@ def clasificar_svm(X, y, df, trainInputs, trainOutputs, testInputs, testOutputs,
 	# graph.savefig(graphname)
 	return precisionTest
 
+#Para usar un clasificador SVM con gridSearch
 def clasificar_svm_gridSearch(X, y, df, trainInputs, trainOutputs, testInputs, testOutputs, graphname, classname):
 	print("\n[" + str(graphname) + "]")
 	Cs = np.logspace(-5, 15, num=11, base=2)
@@ -129,6 +134,7 @@ def clasificar_svm_gridSearch(X, y, df, trainInputs, trainOutputs, testInputs, t
 	print(testOutputs)
 	return precisionTest
 
+#Preprocesamiento de los datos de cada Dataset usado en la practica
 X_iris, y_iris, df_iris, trI_iris, trO_iris, teI_iris, teO_iris = preprocesar_datos('Dataset/iris.csv')
 
 X_contact_lenses, y_contact_lenses, df_contact_lenses, trI_contact_lenses, trO_contact_lenses, teI_contact_lenses, teO_contact_lenses = preprocesar_datos('Dataset/contact_lenses.csv')
@@ -149,7 +155,7 @@ X_car, y_car, df_car, trI_car, trO_car, teI_car, teO_car = preprocesar_datos('Da
 
 X_bank, y_bank, df_bank, trI_bank, trO_bank, teI_bank, teO_bank = preprocesar_datos('Dataset/bank.csv')
 
-
+#Generamos un array con el CCR de train y de test del clasificador de arboles de decision para cada Dataset
 arrayScores_dt = np.array(
 	[
 		clasificar_dt(
@@ -255,6 +261,7 @@ arrayScores_dt = np.array(
 	]
 )
 
+#Generamos un array con el CCR de train y de test del clasificador KNN para cada Dataset
 arrayScores_knn = np.array(
 	[
 		clasificar_knn(
@@ -350,6 +357,7 @@ arrayScores_knn = np.array(
 	]
 )
 
+#Generamos un array con el CCR de train y de test del clasificador SVM para cada Dataset
 arrayScores_svm = np.array(
 	[
 		clasificar_svm(
@@ -467,20 +475,24 @@ arrayScores_svm = np.array(
 
 print("\n")
 
+#Imprimimos por pantalla los arrays obtenidos
 print("\narrayScores_dt" + str(rankdata(arrayScores_dt)))
 print("\narrayScores_knn" + str(rankdata(arrayScores_knn)))
 print("\narrayScores_svm" + str(rankdata(arrayScores_svm)))
 
 print("\n")
 
+#Hacemos Wilcoxon para KNN y Arboles
 wilcoxon = wilcoxon(arrayScores_knn, arrayScores_dt)
 
 print("\n  WILCOXON => " + str(wilcoxon) + "\n")
 
+#Hacemos Friedman para los 3 metdodos de clasificacion
 friedman = friedmanchisquare(arrayScores_dt, arrayScores_knn, arrayScores_svm)
 
 print("\n  FRIEDMAN => " + str(friedman) + "\n")
 
+#Hacemos Iman Davenport con los datos obtenidos en Friedman
 iman_davenport = ((10-1)*friedman[0])/(10*(3-1)-friedman[0])
 
 print("\n  IMAN-DAVENPORT => " + str(iman_davenport) + "\n")
@@ -489,6 +501,7 @@ print("\n")
 
 print("\n  GRIDSEARCH CON SVM\n")
 
+#Hacemos el método de clustering GridSearch con SVM para cada Dataset
 clasificar_svm_gridSearch(
 	X_iris,
 	y_iris,
