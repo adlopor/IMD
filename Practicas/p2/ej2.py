@@ -1,15 +1,17 @@
-import pandas as pd 
 import numpy as np
+import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
+from scipy.io import arff
 
-fig, axs = plt.subplots(ncols=2,sharex=True)
-nombre_fichero="basesDeDatos/diabetes.csv"
-data = pd.read_csv(nombre_fichero) 
-data.groupby("class").plas.hist(alpha=0.4, ax=axs[1])
-axs[1].set_title('Histograma sin normalizar')
-data.groupby("class").plas.hist(alpha=0.4,density=True, ax=axs[0])
-axs[0].set_title('Histograma normalizado')
-plt.xlabel("Glucosa plasmática tras el test")
-plt.ylabel("Frecuencia")
-plt.legend(["tested_negative","tested_positive"])
-plt.show()
+#Hacemos una funcion a la que pasamos el nombre del fichero y ahorramos codigo
+def ej2function(file):
+    #Cargamos archivo y generamos el histograma que se muestra por pantalla.
+	data = arff.loadarff(file)
+	df = pd.DataFrame(data[0])
+	df.plot.hist(alpha=0.5)
+	plt.show()
+
+ej2function('Datasets/iris.arff')
+ej2function('Datasets/diabetes.arff')
+ej2function('Datasets/vote.arff')

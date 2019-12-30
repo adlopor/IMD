@@ -1,12 +1,16 @@
-import pandas as pd
 from sklearn import preprocessing
-from pkg_resources import parse_version
-le = preprocessing.LabelEncoder()
-nombre_variables = ['viento', 'v_viento', 'p_ola', 'm_ola','presion','temperatura']
-olas = pd.read_csv('train.csv')
-le.fit(olas['clase'])
-clases_numeros = le.transform(olas['clase'])
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy.io import arff
 
-olas_df = pd.DataFrame(olas[nombre_variables], columns=nombre_variables)
+def ej5function(file, classname):
+	data = arff.loadarff(file)
+	df = pd.DataFrame(data[0])
+	sns.pairplot(data=df, hue=classname)
+	plt.show()
 
-pd.plotting.scatter_matrix(olas_df, c=clases_numeros,diagonal='kde', figsize=(15, 15),grid=False);
+ej5function('Datasets/iris.arff', 'class')
+ej5function('Datasets/diabetes.arff', 'class')
+ej5function('Datasets/vote.arff', 'Class')
