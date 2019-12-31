@@ -1,0 +1,11 @@
+SVM,CCR Train,CCR Test
+Iris,98.17%,97.56%
+Diabetes,75.82%,77.93%
+Vote,98.70%,94.49%
+Glass,36.25%,33.33%
+Soybean,96.70%,93.89%
+Bank,88.57%,88.26%
+Car,98.76%,95.57%
+Contact_lenses,100.00%,50.00%
+Ionosphere,95.24%,93.94%
+Labor,60.42%,88.89%

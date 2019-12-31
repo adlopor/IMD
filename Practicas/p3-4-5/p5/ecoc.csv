@@ -1,0 +1,11 @@
+ECOC,CCR Train,CCR Test
+Iris,65%,69%
+Glass,100%,60%
+Soybean,99%,95%
+Car,100%,95%
+Contact_lenses,100%,78%
+Ecoli,100%,82%
+Iris_2D,98%,89%
+Post_operative,94%,64%
+Segment_challenge,100%,96%
+Segment_test,100%,91%

@@ -1,0 +1,11 @@
+GridSearch con SVM,CCR Train,CCR Test
+Iris,98.17%,97.56%
+Diabetes,83.70%,70.72%
+Vote,99.03%,93.70%
+Glass,85.62%,66.67%
+Soybean,100.00%,92.58%
+Bank,88.57%,88.26%
+Car,99.34%,98.07%
+Contact_lenses,100.00%,50.00%
+Ionosphere,94.44%,91.92%
+Labor,100.00%,88.89%

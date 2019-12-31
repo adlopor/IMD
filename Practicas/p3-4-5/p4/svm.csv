@@ -1,0 +1,11 @@
+CCR Test,SVM,SVM Bagging
+Iris,95.24%,95.24%
+Diabetes,75.22%,75.65%
+Vote,96.21%,95.45%
+Glass,31.58%,24.56%
+Soybean,92.55%,91.49%
+Bank,89.35%,89.35%
+Car,96.46%,96.88%
+Contact_lenses,60.00%,60.00%
+Ionosphere,95.61%,95.61%
+Labor,66.67%,66.67%

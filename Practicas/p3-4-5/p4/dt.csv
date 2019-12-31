@@ -1,0 +1,11 @@
+CCR Test,DT,DT Bagging
+Iris,97.62%,97.62%
+Diabetes,72.17%,74.35%
+Vote,92.42%,93.94%
+Glass,59.65%,61.40%
+Soybean,90.96%,90.43%
+Bank,86.49%,90.31%
+Car,95.83%,96.04%
+Contact_lenses,80.00%,60.00%
+Ionosphere,92.98%,96.49%
+Labor,93.33%,86.67%

@@ -1,0 +1,11 @@
+OVA,CCR Train,CCR Test
+Iris,100%,98%
+Glass,100%,49%
+Soybean,100%,88%
+Car,100%,91%
+Contact_lenses,100%,99%
+Ecoli,100%,70%
+Iris_2D,98%,93%
+Post_operative,93%,62%
+Segment_challenge,100%,94%
+Segment_test,100%,92%

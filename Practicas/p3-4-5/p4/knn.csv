@@ -1,0 +1,11 @@
+CCR Test,KNN,KNN Bagging
+Iris,97.62%,97.62%
+Diabetes,72.61%,70.87%
+Vote,89.39%,90.91%
+Glass,59.65%,59.65%
+Soybean,88.30%,89.36%
+Bank,88.47%,87.67%
+Car,86.46%,93.54%
+Contact_lenses,60.00%,60.00%
+Ionosphere,78.95%,79.82%
+Labor,100.00%,100.00%

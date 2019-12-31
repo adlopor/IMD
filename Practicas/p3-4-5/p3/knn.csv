@@ -1,0 +1,11 @@
+KNN,CCR Train,CCR Test
+Iris,96.33%,95.12%
+Diabetes,81.50%,69.37%
+Vote,96.43%,91.34%
+Glass,72.50%,64.81%
+Soybean,92.95%,89.52%
+Bank,90.18%,87.77%
+Car,91.73%,89.02%
+Contact_lenses,88.89%,50.00%
+Ionosphere,87.30%,82.83%
+Labor,100.00%,100.00%

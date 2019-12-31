@@ -1,0 +1,11 @@
+DT,CCR Train,CCR Test
+Iris,100.00%,95.12%
+Diabetes,100.00%,71.62%
+Vote,100.00%,93.70%
+Glass,100.00%,59.26%
+Soybean,100.00%,91.70%
+Bank,100.00%,86.78%
+Car,100.00%,94.41%
+Contact_lenses,100.00%,50.00%
+Ionosphere,100.00%,86.87%
+Labor,100.00%,66.67%

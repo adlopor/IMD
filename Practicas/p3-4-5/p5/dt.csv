@@ -1,0 +1,11 @@
+DT,CCR Train,CCR Test
+Iris,"100,00 %","96,00 %"
+Glass,"100,00 %","53,00 %"
+Soybean,"99,00 %","92,00 %"
+Car,"100,00 %","96,00 %"
+Contact_lenses,"100,00 %","100,00 %"
+Ecoli,"100,00 %","83,00 %"
+Iris_2D,"99,00 %","89,00 %"
+Post_operative,"93,00 %","64,00 %"
+Segment_challenge,"100,00 %","94,00 %"
+Segment_test,"100,00 %","94,00 %"

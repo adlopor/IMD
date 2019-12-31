@@ -1,0 +1,11 @@
+Hist_Gradient Boosting,CCR Train,CCR Test
+Iris,100.00%,95.24%
+Diabetes,99.81%,74.78%
+Vote,100.00%,93.94%
+Glass,100.00%,75.44%
+Soybean,100.00%,94.15%
+Bank,99.81%,90.09%
+Car,100.00%,98.54%
+Contact_lenses,63.16%,60.00%
+Ionosphere,100.00%,94.74%
+Labor,85.71%,80.00%
